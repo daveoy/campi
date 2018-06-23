@@ -662,4 +662,4 @@ function handleGyronorm(data) {
         datachannel.send(JSON.stringify(data));
 }
 
-module.exports = { start };
+export default start;
