@@ -12,7 +12,6 @@ class Cam extends Component {
               <video id="remote-video" autoplay="" width="450" height="235">
                   Your browser does not support the video tag.
               </video>
-              <p class="overlay">remote</p>
           </div>
       </div>
   )
