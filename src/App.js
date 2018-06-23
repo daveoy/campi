@@ -10,16 +10,16 @@ class App extends Component {
   render() {
     return (
 	<MuiThemeProvider>
-      <div className="App">
+      <div className="App" align='center'>
       <Tabs>
         <Tab label="Cam" >
             <Cam />
         </Tab>
         <Tab label="Temperature" >
-            <iframe title='a' src="http://192.168.86.71:3000/dashboard-solo/db/monitoring-environment?orgId=1&panelId=1" width="225" height="200" frameborder="0"></iframe>
+            <iframe title='a' src="http://192.168.86.71:3000/dashboard-solo/db/monitoring-environment?orgId=1&panelId=1" frameborder="0"></iframe>
         </Tab>
         <Tab label="Humidity" >
-            <iframe title='b' src="http://192.168.86.71:3000/dashboard-solo/db/monitoring-environment?orgId=1&panelId=4" width="225" height="200" frameborder="0"></iframe>
+            <iframe title='b' src="http://192.168.86.71:3000/dashboard-solo/db/monitoring-environment?orgId=1&panelId=4" frameborder="0"></iframe>
         </Tab>
       </Tabs>
       </div>
