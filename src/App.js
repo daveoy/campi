@@ -13,8 +13,8 @@ class App extends Component {
       <Tabs>
         <Tab label="Cam" >
           <Cam />
-	        <iframe name='hole' width='0' height='0' style="visibility:hidden"></iframe>
-	        <iframe name='hole2' width='0' height='0' style="visibility:hidden"></iframe>
+	        <iframe name='hole' width='0' height='0'></iframe>
+	        <iframe name='hole2' width='0' height='0'></iframe>
         </Tab>
         <Tab label="Graphs" >
             <iframe title='b' src="http://192.168.86.71:3000/dashboard-solo/db/monitoring-environment?orgId=1&panelId=3" frameborder="0"></iframe>
