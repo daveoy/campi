@@ -6,14 +6,16 @@ class Cam extends Component {
     start()
   }
   render(){
-    <div id="container">
-        <div bgcolor="#000000" class="overlayWrapper">
-            <video id="remote-video" autoplay="" width="450" height="235">
-                Your browser does not support the video tag.
-            </video>
-            <p class="overlay">remote</p>
-        </div>
-    </div>
+    return(
+      <div id="container">
+          <div bgcolor="#000000" class="overlayWrapper">
+              <video id="remote-video" autoplay="" width="450" height="235">
+                  Your browser does not support the video tag.
+              </video>
+              <p class="overlay">remote</p>
+          </div>
+      </div>
+  )
   }
 }
 
