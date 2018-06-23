@@ -22,8 +22,8 @@ function addGyronormScript() {
     });
 }
 
-var signalling_server_hostname = location.hostname || "192.168.86.71";
-var signalling_server_address = signalling_server_hostname + ':' + (location.port || (location.protocol === 'https:' ? 443 : 80));
+var signalling_server_hostname = "192.168.86.71";
+var signalling_server_address = signalling_server_hostname + ':80';
 var isFirefox = typeof InstallTrigger !== 'undefined';// Firefox 1.0+
 
 var ws = null;
@@ -61,13 +61,6 @@ var URL = window.URL || window.webkitURL;
 function createPeerConnection() {
     try {
         var pcConfig_ = pcConfig;
-        try {
-            ice_servers = document.getElementById('ice_servers').value;
-            if (ice_servers) {
-                pcConfig_.iceServers = JSON.parse(ice_servers);
-            }
-        } catch (e) {
-        }
         console.log(JSON.stringify(pcConfig_));
         pc = new RTCPeerConnection(pcConfig_, pcOptions);
         pc.onicecandidate = onIceCandidate;
@@ -138,7 +131,7 @@ function start() {
         document.documentElement.style.cursor = 'wait';
         var server = "192.168.86.71:8160";
 
-        var protocol = location.protocol === "https:" ? "wss:" : "ws:";
+        var protocol = "ws:";
         ws = new WebSocket(protocol + '//' + server + '/stream/webrtc');
 
         function call(stream) {
@@ -667,47 +660,6 @@ function handleGyronorm(data) {
     // data.dm.gamma    ( devicemotion event rotationRate gamma value )
     if (datachannel && document.getElementById('orientationsend').checked)
         datachannel.send(JSON.stringify(data));
-}
-
-function orientationsend_selection() {
-    if (document.getElementById('orientationsend').checked) {
-        if (isGyronormPresent()) {
-            console.log("gyronorm.js library found!");
-            if (gn) {
-                gn.setHeadDirection();
-                return;
-            }
-            try {
-                gn = new GyroNorm();
-            } catch (e) {
-                console.log(e);
-                document.getElementById('orientationsend').checked = false;
-                return;
-            }
-            var args = {
-                frequency: 60, // ( How often the object sends the values - milliseconds )
-                gravityNormalized: true, // ( If the gravity related values to be normalized )
-                orientationBase: GyroNorm.GAME, // ( Can be GyroNorm.GAME or GyroNorm.WORLD. gn.GAME returns orientation values with respect to the head direction of the device. gn.WORLD returns the orientation values with respect to the actual north direction of the world. )
-                decimalCount: 1, // ( How many digits after the decimal point will there be in the return values )
-                logger: null, // ( Function to be called to log messages from gyronorm.js )
-                screenAdjusted: false            // ( If set to true it will return screen adjusted values. )
-            };
-            gn.init(args).then(function () {
-                gn.start(handleGyronorm);
-                gn.setHeadDirection(); // only with gn.GAME
-            }).catch(function (e) {
-                console.log("DeviceOrientation or DeviceMotion might not be supported by this browser or device");
-            });
-        }
-        if (!gn) {
-            window.addEventListener('deviceorientation', handleOrientation, true);
-            console.log("gyronorm.js library not found, using defaults");
-        }
-    } else {
-        if (!gn) {
-            window.removeEventListener('deviceorientation', handleOrientation, true);
-        }
-    }
 }
 
 module.exports = { start };
