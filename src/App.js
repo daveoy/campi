@@ -15,12 +15,14 @@ class App extends Component {
           <Cam />
         </Tab>
         <Tab label="Graphs" >
+	    <div align='center'>
             <iframe title='b' src="http://192.168.86.71:3000/dashboard-solo/db/monitoring-environment?orgId=1&panelId=3" frameborder="0"></iframe>
             <iframe title='a' src="http://192.168.86.71:3000/dashboard-solo/db/monitoring-environment?orgId=1&panelId=2" frameborder="0"></iframe>
             <iframe title='b' src="http://192.168.86.71:3000/dashboard-solo/db/monitoring-environment?orgId=1&panelId=4" frameborder="0"></iframe>
             <iframe title='a' src="http://192.168.86.71:3000/dashboard-solo/db/monitoring-environment?orgId=1&panelId=1" frameborder="0"></iframe>
 	        <iframe name='hole' width='0' height='0'></iframe>
 	        <iframe name='hole2' width='0' height='0'></iframe>
+	    </div>
         </Tab>
         <Tab label="Control" >
 	    <div align='center'>
