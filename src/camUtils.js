@@ -115,9 +115,10 @@ function onIceCandidate(event) {
 }
 
 function onRemoteStreamAdded(event) {
-    console.log("Remote stream added:", URL.createObjectURL(event.stream));
+    console.log('*****event coming*****')
+    console.log(event)
     var remoteVideoElement = document.getElementById('remote-video');
-    remoteVideoElement.src = URL.createObjectURL(event.stream);
+    remoteVideoElement.srcObject = event.stream;
     remoteVideoElement.play();
 }
 
@@ -301,7 +302,6 @@ function start() {
                 pc.close();
                 pc = null;
             }
-            document.getElementById("stop").disabled = true;
             document.getElementById("start").disabled = false;
             document.documentElement.style.cursor = 'default';
         };
