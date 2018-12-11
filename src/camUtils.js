@@ -120,6 +120,13 @@ function onRemoteStreamAdded(event) {
     var remoteVideoElement = document.getElementById('remote-video');
     remoteVideoElement.srcObject = event.stream;
     remoteVideoElement.play();
+    if (remoteVideoElement.mozRequestFullScreen) {
+      remoteVideoElement.mozRequestFullScreen();
+    } else if (remoteVideoElement.webkitRequestFullscreen) {
+      remoteVideoElement.webkitRequestFullscreen();
+    } else if (remoteVideoElement.requestFullscreen) {
+      remoteVideoElement.requestFullscreen();
+    }
 }
 
 function onRemoteStreamRemoved(event) {

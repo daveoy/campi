@@ -9,7 +9,7 @@ class Cam extends Component {
     return(
       <div id="container">
           <div bgcolor="#000000" align='center' class="overlayWrapper">
-              <video controls id="remote-video" autoplay="" width="450" height="235">
+              <video controls id="remote-video" width="450" height="235">
                   Your browser does not support the video tag.
               </video>
           </div>
