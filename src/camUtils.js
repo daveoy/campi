@@ -309,7 +309,6 @@ function start() {
                 pc.close();
                 pc = null;
             }
-            document.getElementById("start").disabled = false;
             document.documentElement.style.cursor = 'default';
         };
 

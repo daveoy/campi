@@ -1,11 +1,12 @@
-const { spawnSync } = require('child_process');
 import React, { Component } from 'react';
 import start from './camUtils';
-import 'Button' from 'material-ui/core/Button'
+import RaisedButton from 'material-ui/RaisedButton'
 class Cam extends Component {
-  disconnectCamera(){
-    const resp = spawnSync('/bin/systemctl restart uv4l_raspicam')
-    return 0
+  async disconnectCamera(){
+	const refreshResponse = await fetch('http://192.168.86.71:4666/refresh')
+	const refreshResponseJSON = await refreshResponse.json()
+	const refresh = await refreshResponseJSON.resp
+	console.log(refresh)
   }
   componentDidMount(){
     start()
@@ -18,7 +19,7 @@ class Cam extends Component {
                   Your browser does not support the video tag.
               </video>
           </div>
-          <Button variat='contained' onClick=disconnectCamera()/>
+          <RaisedButton primary={true} label='take video'  onClick={() => this.disconnectCamera()}/>
       </div>
   )
   }
