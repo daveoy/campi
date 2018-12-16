@@ -1,0 +1,11 @@
+[Unit]
+Description=campi api
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/node /home/pi/campi/api/api.js
+WorkingDirectory=/home/pi/campi/
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

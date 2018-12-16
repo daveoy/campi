@@ -19,7 +19,9 @@ class Cam extends Component {
                   Your browser does not support the video tag.
               </video>
           </div>
+	    <div align='center'>
           <RaisedButton primary={true} label='take video'  onClick={() => this.disconnectCamera()}/>
+	    </div>
       </div>
   )
   }
